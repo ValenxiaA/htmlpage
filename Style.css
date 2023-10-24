@@ -1,0 +1,205 @@
+   * {
+  font-family: 'Nunito', sans-serif;
+  text-decoration: none;
+  list-style: none;
+  outline: none;
+  border: none;
+  text-align: center;
+  padding: 0;
+}
+
+body {
+            background-image: url('https://www.levistrauss.com/wp-content/uploads/2015/03/water-feature.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+   backdrop-filter: blur(1px);
+   padding:2%;
+        }
+ /* Style for the two columns */
+        .column {
+           
+    justify-content: center;
+    align-items: center;
+            width: 50%;
+            float: left;
+        }
+#c2{
+   font: 2em/1.5 sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+}
+
+        /* Clear the floats after the columns */
+        .row::after {
+            height:50%;
+            content: "";
+            clear: both;
+            display: table;
+        }
+:root {
+   font-weight: bold;
+   color: #66d1ff; /* Text color */
+   text-shadow: 3px 2px 1px #054788;
+   --hue: 223;
+	--bg: hsl(var(--hue),10%,90%);
+	--fg: hsl(var(--hue),10%,10%);
+	--primary: hsl(var(--hue),90%,50%);
+	--primary-t: hsla(var(--hue),90%,50%,0);
+	--unchecked: #ff000099;
+	--checked: #66d0ff;
+	--trans-dur: 0.4s;
+	--trans-timing1: cubic-bezier(0.65,0,0.35,1);
+	--trans-timing2: cubic-bezier(0.68,-0.6,0.32,1.6);
+}
+.odometer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    font-size: 3em;
+}
+
+.number-ticker {
+    overflow: hidden;
+    height: 1em;
+    background-color: #89CFF0;
+    box-shadow: 0 0 0.05em black inset;
+}
+.digit {
+  float: left;
+  line-height: 1;
+  transition: margin-top 1.75s ease;
+  border-right: 1px solid #555;
+  padding: 0 0.075em;
+}
+
+
+input {
+	color: var(--fg);
+	font: 1em/1.5 sans-serif;
+	transition:
+		background-color var(--trans-dur),
+		color var(--trans-dur);
+}
+
+.switch,
+.switch__input {
+	-webkit-tap-highlight-color: transparent;
+}
+.switch {
+	display: flex;
+	align-items: center;
+	margin: auto;
+}
+.switch__input {
+	background-color: var(--unchecked);
+	border-radius: 0.75em;
+	box-shadow: 0 0 0 0.125em var(--primary-t);
+	outline: transparent;
+	position: relative;
+	width: 2.25em;
+	height: 1.5em;
+	transition:
+		background-color var(--trans-dur) var(--trans-timing1),
+		box-shadow 0.15s var(--trans-timing1),
+		transform var(--trans-dur) var(--trans-timing2);
+	-webkit-appearance: none;
+	appearance: none;
+}
+.switch__input:focus-visible {
+	box-shadow: 0 0 0 0.125em var(--primary);
+}
+.switch__input:before {
+	background-color: var(--bg);
+	border-radius: 50%;
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0.25em;
+	left: 0.25em;
+	transition:
+		background-color var(--trans-dur),
+		transform var(--trans-dur) var(--trans-timing2);
+	width: 1em;
+	height: 1em;
+}
+.switch__letters,
+.switch__letter {
+	transition: transform var(--trans-dur) var(--trans-timing2);
+}
+.switch__letters {
+	margin-left: 0.375em;
+	overflow: visible;
+	pointer-events: none;
+	width: 1.5em;
+	height: 1.5em;
+}
+.switch__letter:last-child {
+	transform: translateX(14px);
+}
+.switch__letter-stroke {
+	stroke: var(--unchecked);
+	transition:
+		stroke var(--trans-dur) var(--trans-timing1),	
+		stroke-dashoffset var(--trans-dur) var(--trans-timing2),
+		transform var(--trans-dur) var(--trans-timing2);
+}
+.switch__letter-stroke:nth-child(2) {
+	transform-origin: 2px 2px;
+}
+.switch__text {
+	overflow: hidden;
+	position: absolute;
+	width: 1px;
+	height: 1px;
+}
+
+/* “on” state */
+.switch__input:checked {
+	background-color: var(--checked);
+}
+.switch__input:checked,
+.switch_input:checked + .switch_letters {
+	transform: translateX(0.375em);
+}
+.switch__input:checked:before {
+	transform: translateX(0.75em);
+}
+.switch_input:checked ~ .switchletters .switch_letter-stroke {
+	stroke: var(--checked);
+}
+.switch_input:checked ~ .switchletters .switch_letter-stroke:nth-child(2) {
+	stroke-dashoffset: 6;
+}
+.switch_input:checked ~ .switchletters .switch_letter-stroke:last-child {
+	stroke-dashoffset: 4;
+}
+.switch_input:checked ~ .switchletters .switchletter:first-child .switch_letter-stroke:nth-child(2) {
+	stroke-dashoffset: 0;
+	transform: rotate(56.5deg);
+}
+.switch_input:checked ~ .switchletters .switch_letter:last-child {
+	stroke-dashoffset: 0;
+	transform: translateX(8px);
+}
+
+/* Dark theme */
+@media (prefers-color-scheme: dark) {
+	:root {
+		--bg: hsl(var(--hue),10%,10%);
+		--fg: hsl(var(--hue),10%,90%);
+		--primary: hsl(var(--hue),90%,60%);
+		--primary-t: hsla(var(--hue),90%,60%,0);
+		--unchecked: hsl(var(--hue),10%,30%);
+		--checked: hsl(133,70%,50%);
+	}
+}
+
+
+@media screen and (max-width: 620px) {
+  .container {
+    font-size: 2em;
+  }
+}
